@@ -1,0 +1,82 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+li {
+    display: inline-block;
+    padding: 10px;
+}
+.my-nav-links {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+li.flash {
+    color: red;
+    font-size: large;
+}
+.categories{
+    /*display: inline-flex;*/
+    /*margin: 10px;*/
+}
+.categoryList > label{
+    margin-right: 10px;
+}
+.categoryList{
+    display: inline-flex;
+}
+.row{
+    justify-content: space-between;
+}
+.d-flex{
+    gap: 10px;
+}
+
+textarea{
+    height: 200px;
+    width: 300px;
+    display: block;
+}
+label > textarea{
+    display: block;
+}
+.mainImageContainer{
+    width: 50%;
+}
+.mainImage{
+    max-width: 100%;
+    /*max-height: 50%;*/
+    border: 1px solid dimgray;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: whitesmoke;
+}
+.smallImage{
+    width: 30%;
+    height: auto;
+    border: 1px solid dimgray;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: whitesmoke;
+}
+.submit{
+    padding-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

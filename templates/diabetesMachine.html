@@ -1,0 +1,36 @@
+{%  extends "base.html" %}
+
+{% block Page_Title %}
+Diabetes Prediction
+{% endblock %}
+
+{% block Recipe_Title %}
+    {%  with messages = get_flashed_messages() %}
+        {%  if messages %}
+            <ul class=flashes>
+            {%  for message in messages %}
+                <li class="flash"> {{  message }} </li>
+            {%  endfor %}
+            </ul>
+        {%  endif %}
+    {% endwith %}
+    {%  block body%}{% endblock %}
+<h1>{{ r1['name'] }}</h1>
+{% endblock %}
+
+{% block Machine_Name %}
+    Kilometers per Litre Predictor
+{%  endblock %}
+
+{% block Machine_Form %}
+    FORM
+{% endblock %}
+
+{% block Machine_Response %}
+    Response
+{% endblock %}
+
+{% block footer_contents %}
+    Chris Harnett <br>
+    Student Number 20188141
+{% endblock %}
