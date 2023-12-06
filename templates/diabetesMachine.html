@@ -1,10 +1,18 @@
 {%  extends "base.html" %}
 
 {% block Page_Title %}
-Diabetes Prediction
+Estimation Machine
 {% endblock %}
 
-{% block Recipe_Title %}
+{% block head_title %}
+Diabetes Outcome Prediction
+{% endblock %}
+
+{% block Machine_Name %}
+    Diabetes Predictor
+{%  endblock %}
+
+{% block Machine_Description %}
     {%  with messages = get_flashed_messages() %}
         {%  if messages %}
             <ul class=flashes>
@@ -15,15 +23,32 @@ Diabetes Prediction
         {%  endif %}
     {% endwith %}
     {%  block body%}{% endblock %}
-<h1>{{ r1['name'] }}</h1>
 {% endblock %}
 
-{% block Machine_Name %}
-    Kilometers per Litre Predictor
-{%  endblock %}
-
 {% block Machine_Form %}
-    FORM
+    <form action="" enctype="multipart/form-data" method="post" class="w-50">
+        {{ form.csrf_token }}
+        <div class="form-floating my-3">
+            {{ form.personAge(class="form-control") }}
+            {{ form.personAge.label() }}
+        </div>
+        <div class="form-floating my-3">
+            {{ form.personBMI(class="form-control") }}
+            {{ form.personBMI.label() }}
+        </div>
+        <div class="form-floating my-3">
+            {{ form.personGlucose(class="form-control") }}
+            {{ form.personGlucose.label() }}
+        </div>
+        <div class="my-3">
+            {{ form.submit(class="btn btn-dark") }}
+        </div>
+        <div class="form-group">
+            <label for="formControlRange">Example Range input</label>
+            <input type="range" class="form-control-range" id="formControlRange">
+            <span id="rangeValue" class="feedback">0</span>
+        </div>
+    </form>
 {% endblock %}
 
 {% block Machine_Response %}

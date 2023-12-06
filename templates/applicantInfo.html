@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% from "form_macros.html" import render_field %}
+
+{% block messages %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+{% block H1_Description %}
+    <h1>Add applicant information using the form below!</h1>
+    <br>
+{% endblock %}
+
+{% block H1_Content %}
+    <form action="" enctype="multipart/form-data" method="post">
+        {{ form.csrf_token }}
+        <div class="form-floating my-3">
+            {{ form.userAge(class="form-control") }}
+            {{ form.userAge.label() }}
+        </div>
+        <div class="my-3">
+            {{ form.userSex.label(class="form-label") }}
+            {{ form.userSex(class="form-select") }}
+        </div>
+        <div class="form-floating my-3">
+            {{ form.userBMI(class="form-control") }}
+            {{ form.userBMI.label() }}
+        </div>
+        <div class="my-3">
+            {{ form.userSmoker.label(class="form-label") }}
+            {{ form.userSmoker(class="form-select") }}
+        </div>
+        <div class="my-3">
+            {{ form.submit(class="btn btn-dark") }}
+        </div>
+    </form>
+{% endblock %}
+
+{% block H2_Description %}
+{% endblock %}
+
+{% block H2_Content %}
+
+{% endblock %}

@@ -243,7 +243,7 @@ th {
     background: #fff !important;
   }
   .navbar {
-    display: none;
+    /*display: none;*/
   }
   .btn > .caret,
   .dropup > .btn > .caret {

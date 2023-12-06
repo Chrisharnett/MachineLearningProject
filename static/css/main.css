@@ -3,6 +3,22 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+/*
+32292F Raisin Black
+575366 Davy's Gray
+6E7DAB Glaucous
+5762D5 Savoy blue
+D1E3DD Mint green
+*/
+
+
+.navbar {
+    background-color: #32292F;
+}
+
+footer{
+
+}
 
 li {
     display: inline-block;
@@ -42,25 +58,6 @@ textarea{
 }
 label > textarea{
     display: block;
-}
-.mainImageContainer{
-    width: 50%;
-}
-.mainImage{
-    max-width: 100%;
-    /*max-height: 50%;*/
-    border: 1px solid dimgray;
-    border-radius: 4px;
-    padding: 5px;
-    background-color: whitesmoke;
-}
-.smallImage{
-    width: 30%;
-    height: auto;
-    border: 1px solid dimgray;
-    border-radius: 4px;
-    padding: 5px;
-    background-color: whitesmoke;
 }
 .submit{
     padding-top: 5px;

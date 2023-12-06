@@ -1,10 +1,15 @@
 {%  extends "base.html" %}
+{%  from "form_macros.html" import render_field %}
 
 {% block Page_Title %}
+Estimation Machine
+{% endblock %}
+
+{% block head_title %}
 Kilometers per Liter Predictor
 {% endblock %}
 
-{% block Recipe_Title %}
+{% block Machine_Title %}
     {%  with messages = get_flashed_messages() %}
         {%  if messages %}
             <ul class=flashes>
@@ -23,7 +28,34 @@ Kilometers per Liter Predictor
 {%  endblock %}
 
 {% block Machine_Form %}
-    FORM
+    <h1>Add car information using the form below to get a miles per gallon estimate!</h1>
+    <br>
+    <form action="" enctype="multipart/form-data" method="post" class="w-50">
+        {{ form.csrf_token }}
+        <div class="form-floating my-3">
+            {{ form.carCylinders(class="form-control") }}
+            {{ form.carCylinders.label() }}
+        </div>
+        <div class="form-floating my-3">
+            {{ form.carHorsepower(class="form-control") }}
+            {{ form.carHorsepower.label() }}
+        </div>
+        <div class="form-floating my-3">
+            {{ form.carWeight(class="form-control") }}
+            {{ form.carWeight.label() }}
+        </div>
+        <div class="form-floating my-3">
+            {{ form.carYear(class="form-control") }}
+            {{ form.carYear.label() }}
+        </div>
+        <div class="my-3">
+            {{ form.carOrigin.label(class="form-label") }}
+            {{ form.carOrigin(class="form-select") }}
+        </div>
+        <div class="my-3">
+            {{ form.submit(class="btn btn-dark") }}
+        </div>
+    </form>
 {% endblock %}
 
 {% block Machine_Response %}
