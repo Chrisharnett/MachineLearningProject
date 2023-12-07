@@ -28,7 +28,7 @@ Kilometers per Liter Predictor
 {%  endblock %}
 
 {% block Machine_Form %}
-    <h1>Add car information using the form below to get a miles per gallon estimate!</h1>
+    <h3>Add vehicle information using the form below to get a fuel efficiency prediction!</h3>
     <br>
     <form action="" enctype="multipart/form-data" method="post" class="w-50">
         {{ form.csrf_token }}
@@ -59,7 +59,9 @@ Kilometers per Liter Predictor
 {% endblock %}
 
 {% block Machine_Response %}
-    Response
+    {% if result %}
+        <h2> Predicted fuel economy: {{  result }} Litres / 100Km</h2>
+    {% endif %}
 {% endblock %}
 
 {% block footer_contents %}

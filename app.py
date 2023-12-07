@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from forms import VehicleInformationForm, PersonalDataForm
 from datetime import datetime
+from machines import lpkPrediction, diabetesPrediction
 import os
 import warnings
 
@@ -25,64 +26,40 @@ def diabetesMachine():
         person_bmi = form.personBMI.data
         person_glucose = form.personGlucose.data
 
-        person_dict = {"age": person_age, "bmi": person_bmi, "glucose": person_glucose}
+        result = diabetesPrediction({"age": person_age, "bmi": person_bmi, "glucose": person_glucose})
 
-        return render_template("viewDiabeticResults.html", person_dict=person_dict)
+        return render_template("diabetesMachine.html", form=form, result=result)
 
     else:
         return render_template('diabetesMachine.html', form=form)
 
 
 @app.route('/kplMachine', methods=['POST', 'GET'])
-def kplMachine():
+def lpkMachine():
     form = VehicleInformationForm()
     if form.validate_on_submit():
-        car_cylinders = form.carCylinders.data
-        car_hp = form.carHorsepower.data
-        car_weight = form.carWeight.data
-        car_year = form.carYear.data
-        car_origin = form.carOrigin.data
+        cyl = form.carCylinders.data
+        horsepower = form.carHorsepower.data
+        weight = form.carWeight.data
+        year = form.carYear.data
+        origin = form.carOrigin.data
 
-        if car_origin == "USA":
-            car_dict = {"cylinders": car_cylinders, "horsepower": car_hp, "weight": car_weight,
-                        "age": datetime.today().year - car_year, "origin_japan": 0, "origin_usa": 1}
-        elif car_origin == "Japan":
-            car_dict = {"cylinders": car_cylinders, "horsepower": car_hp, "weight": car_weight,
-                        "age": datetime.today().year - car_year, "origin_japan": 1, "origin_usa": 0}
+        if origin == "USA":
+            vehicle = {"cylinders": cyl, "horsepower": horsepower, "weight": weight,
+                        "age": datetime.today().year - year, "origin_japan": 0, "origin_usa": 1}
+        elif origin == "Japan":
+            vehicle = {"cylinders": cyl, "horsepower": horsepower, "weight": weight,
+                        "age": datetime.today().year - year, "origin_japan": 1, "origin_usa": 0}
         else:
-            car_dict = {"cylinders": car_cylinders, "horsepower": car_hp, "weight": car_weight,
-                        "age": datetime.today().year - car_year, "origin_japan": 0, "origin_usa": 0}
+            vehicle = {"cylinders": cyl, "horsepower": horsepower, "weight": weight,
+                        "age": datetime.today().year - year, "origin_japan": 0, "origin_usa": 0}
 
-        return render_template("viewMPGResults.html", car_dict=car_dict)
+        result = lpkPrediction(vehicle)
+        return render_template("lpkMachine.html", form=form, result = result)
 
     else:
-        return render_template('kplMachine.html', form=form)
+        return render_template('lpkMachine.html', form=form)
 
-
-@app.route('/vehicleInformation', methods=['POST', 'GET'])
-def get_vehicle_information():
-    form = VehicleInformationForm()
-    if form.validate_on_submit():
-        car_cylinders = form.carCylinders.data
-        car_hp = form.carHorsepower.data
-        car_weight = form.carWeight.data
-        car_year = form.carYear.data
-        car_origin = form.carOrigin.data
-
-        if car_origin == "USA":
-            car_dict = {"cylinders": car_cylinders, "horsepower": car_hp, "weight": car_weight,
-                        "age": datetime.today().year - car_year, "origin_japan": 0, "origin_usa": 1}
-        elif car_origin == "Japan":
-            car_dict = {"cylinders": car_cylinders, "horsepower": car_hp, "weight": car_weight,
-                        "age": datetime.today().year - car_year, "origin_japan": 1, "origin_usa": 0}
-        else:
-            car_dict = {"cylinders": car_cylinders, "horsepower": car_hp, "weight": car_weight,
-                        "age": datetime.today().year - car_year, "origin_japan": 0, "origin_usa": 0}
-
-        return render_template("viewMPGResults.html", car_dict=car_dict)
-
-    else:
-        return render_template("vehicleInfo.html", form=form)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5002, debug=True)

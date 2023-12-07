@@ -26,6 +26,7 @@ Diabetes Outcome Prediction
 {% endblock %}
 
 {% block Machine_Form %}
+    <h3>Enter the data below to find a diabetes outcome prediction</h3>
     <form action="" enctype="multipart/form-data" method="post" class="w-50">
         {{ form.csrf_token }}
         <div class="form-floating my-3">
@@ -52,7 +53,9 @@ Diabetes Outcome Prediction
 {% endblock %}
 
 {% block Machine_Response %}
-    Response
+    {% if result %}
+        <h2> Predicted diabetes diagnoses: {{ result }} </h2>
+    {% endif %}
 {% endblock %}
 
 {% block footer_contents %}

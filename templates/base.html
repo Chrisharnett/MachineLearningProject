@@ -31,7 +31,7 @@
         <div class="my-navbar">
             <ul class="my-nav-links">
 {#                Km per hour predictor#}
-                <li><a href={{ url_for('kplMachine') }}>Kilometre Per Liter Predictor</a></li>
+                <li><a href={{ url_for('lpkMachine') }}>Kilometre Per Liter Predictor</a></li>
                 <li><a href={{ url_for('diabetesMachine') }}>Diabetes Predictor</a></li>
             </ul>
         </div>
@@ -40,7 +40,7 @@
     <hr>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron p-4 pt-5 mt-4 text-white" style="background-color: #6E7DAB;">
+    <div class="jumbotron p-4 pt-5 mt-4 text-white mb-4" style="background-color: #6E7DAB;">
         <div class="container">
             <div>{% block Machine_Name %}{% endblock %}</div>
             <div>{% block Machine_Description %}{% endblock %}</div>
@@ -51,8 +51,10 @@
         <div class="machineResponse">
             {% block Machine_Response %}{% endblock %}
         </div>
+        <div style="height: 200px;"></div>
 
     </div>
+
 
       <footer class="footer mt-auto py-3 navbar-dark text-white p-4 fixed-bottom" style="background-color: #32292F;">
         <p>Chris Harnett <br>
