@@ -35,18 +35,23 @@ Kilometers per Liter Predictor
         <div class="form-floating my-3">
             {{ form.carCylinders(class="form-control") }}
             {{ form.carCylinders.label() }}
+            <span>3 - 8</span>
         </div>
+
         <div class="form-floating my-3">
             {{ form.carHorsepower(class="form-control") }}
             {{ form.carHorsepower.label() }}
+            <span>40 - 300</span>
         </div>
         <div class="form-floating my-3">
             {{ form.carWeight(class="form-control") }}
             {{ form.carWeight.label() }}
+            <span>1500 - 5140</span>
         </div>
         <div class="form-floating my-3">
             {{ form.carYear(class="form-control") }}
             {{ form.carYear.label() }}
+            <span>1950 - 2023</span>
         </div>
         <div class="my-3">
             {{ form.carOrigin.label(class="form-label") }}

@@ -36,10 +36,12 @@ Diabetes Outcome Prediction
         <div class="form-floating my-3">
             {{ form.personBMI(class="form-control") }}
             {{ form.personBMI.label() }}
+            <span>0 - 70</span>
         </div>
         <div class="form-floating my-3">
             {{ form.personGlucose(class="form-control") }}
             {{ form.personGlucose.label() }}
+            <span>0 - 200</span>
         </div>
         <div class="my-3">
             {{ form.submit(class="btn btn-dark") }}

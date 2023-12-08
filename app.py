@@ -26,9 +26,11 @@ def diabetesMachine():
         person_bmi = form.personBMI.data
         person_glucose = form.personGlucose.data
 
-        result = diabetesPrediction({"age": person_age, "bmi": person_bmi, "glucose": person_glucose})
-
-        return render_template("diabetesMachine.html", form=form, result=result)
+        prediction = diabetesPrediction({"age": person_age, "bmi": person_bmi, "glucose": person_glucose})
+        if prediction == 0:
+            return render_template("diabetesMachine.html", form=form, result="False")
+        else:
+            return render_template("diabetesMachine.html", form=form, result="True")
 
     else:
         return render_template('diabetesMachine.html', form=form)
@@ -55,7 +57,8 @@ def lpkMachine():
                         "age": datetime.today().year - year, "origin_japan": 0, "origin_usa": 0}
 
         result = lpkPrediction(vehicle)
-        return render_template("lpkMachine.html", form=form, result = result)
+
+        return render_template("lpkMachine.html", form=form, result = round(result, 0))
 
     else:
         return render_template('lpkMachine.html', form=form)
