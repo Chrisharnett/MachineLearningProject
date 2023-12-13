@@ -16,6 +16,11 @@ D1E3DD Mint green
     background-color: #32292F;
 }
 
+.form-control label {
+    background-color: #575366;
+    color: #D1E3DD;
+}
+
 footer{
 
 }

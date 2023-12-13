@@ -22,34 +22,30 @@ Diabetes Outcome Prediction
             </ul>
         {%  endif %}
     {% endwith %}
-    {%  block body%}{% endblock %}
+    {%  block body%}
+        <p>Enter the data below for a diabetes outcome prediction</p>
+    {% endblock %}
 {% endblock %}
 
 {% block Machine_Form %}
-    <h3>Enter the data below to find a diabetes outcome prediction</h3>
     <form action="" enctype="multipart/form-data" method="post" class="w-50">
         {{ form.csrf_token }}
-        <div class="form-floating my-3">
-            {{ form.personAge(class="form-control") }}
+        <div class="col-md-2">
             {{ form.personAge.label() }}
+            {{ form.personAge(class="form-control form-control-lg", id='personAge', min=0, max=120, type='number', value=form.personAge.data or 0) }}
         </div>
-        <div class="form-floating my-3">
-            {{ form.personBMI(class="form-control") }}
-            {{ form.personBMI.label() }}
-            <span>0 - 70</span>
+        <div class="my-3">
+            {{ form.personBMI.label() }}<br>
+            {{ form.personBMI(class="form-control-range", id="personBMI", min=0, max=70, type='range', value=form.personBMI.data or 0) }}
+            <span id="bmiValue">{{ form.personBMI.data or 0 }}</span>
         </div>
-        <div class="form-floating my-3">
-            {{ form.personGlucose(class="form-control") }}
-            {{ form.personGlucose.label() }}
-            <span>0 - 200</span>
+        <div class="my-3">
+            {{ form.personGlucose.label() }}<br>
+            {{ form.personGlucose(class="form-control-range", id="personGlucose", min=0, max=200, type='range', value=form.personGlucose.data or 0) }}
+            <span id="glucoseValue">{{ form.personGlucose.data or 0 }}</span>
         </div>
         <div class="my-3">
             {{ form.submit(class="btn btn-dark") }}
-        </div>
-        <div class="form-group">
-            <label for="formControlRange">Example Range input</label>
-            <input type="range" class="form-control-range" id="formControlRange">
-            <span id="rangeValue" class="feedback">0</span>
         </div>
     </form>
 {% endblock %}
@@ -57,6 +53,8 @@ Diabetes Outcome Prediction
 {% block Machine_Response %}
     {% if result %}
         <h2> Predicted diabetes diagnoses: {{ result }} </h2>
+    {% else %}
+        <h2> Predicted diabetes diagnoses: Press Submit</h2>
     {% endif %}
 {% endblock %}
 

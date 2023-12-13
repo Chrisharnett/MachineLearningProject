@@ -3,7 +3,7 @@ import decimal
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
 from wtforms.fields import SelectField, IntegerField, DecimalField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, NumberRange
 
 
 class VehicleInformationForm(FlaskForm):
@@ -16,8 +16,8 @@ class VehicleInformationForm(FlaskForm):
     submit = SubmitField("Submit")
 
 class PersonalDataForm(FlaskForm):
-    personAge = IntegerField("Age:", validators=[DataRequired()])
-    personBMI = DecimalField("BMI:", places=2, rounding=decimal.ROUND_UP, validators=[DataRequired()])
-    personGlucose = IntegerField("Glucose:", validators=[DataRequired()])
+    personAge = IntegerField("Age:", validators=[DataRequired(), NumberRange(min=0, max=120)])
+    personBMI = DecimalField("BMI:", places=2, rounding=decimal.ROUND_UP, validators=[DataRequired(), NumberRange(min=0, max=70)])
+    personGlucose = IntegerField("Glucose:", validators=[DataRequired(), NumberRange(min=0, max=200)])
 
     submit = SubmitField("Submit")

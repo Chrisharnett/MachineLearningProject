@@ -6,7 +6,7 @@ Estimation Machine
 {% endblock %}
 
 {% block head_title %}
-Kilometers per Liter Predictor
+Liters per 100 Kilometers
 {% endblock %}
 
 {% block Machine_Title %}
@@ -24,7 +24,7 @@ Kilometers per Liter Predictor
 {% endblock %}
 
 {% block Machine_Name %}
-    Kilometers per Litre Predictor
+    Liters per 100 Kilometers
 {%  endblock %}
 
 {% block Machine_Form %}
@@ -33,14 +33,13 @@ Kilometers per Liter Predictor
     <form action="" enctype="multipart/form-data" method="post" class="w-50">
         {{ form.csrf_token }}
         <div class="form-floating my-3">
-            {{ form.carCylinders(class="form-control") }}
             {{ form.carCylinders.label() }}
-            <span>3 - 8</span>
+            {{ form.carCylinders(class="form-control-range", id='carCylinders', min=3, max=12, type='range', value=form.carCylinders.data or 3) }}
+            <span id="cylindersValue">{{  form.carCylinders.data or 0 }}</span>
         </div>
-
         <div class="form-floating my-3">
-            {{ form.carHorsepower(class="form-control") }}
             {{ form.carHorsepower.label() }}
+            {{ form.carHorsepower(class="form-control-range", id='carHorsepower', min=40, max=200, type='range', value=form.carHorsepower.data or 40) }}
             <span>40 - 300</span>
         </div>
         <div class="form-floating my-3">
@@ -65,7 +64,9 @@ Kilometers per Liter Predictor
 
 {% block Machine_Response %}
     {% if result %}
-        <h2> Predicted fuel economy: {{  result }} Litres / 100Km</h2>
+        <h2> Predicted fuel economy: {{ result }} Litres / 100Km</h2>
+    {% else %}
+        <h2> Predicted fuel economy: Press Submit</h2>
     {% endif %}
 {% endblock %}
 
