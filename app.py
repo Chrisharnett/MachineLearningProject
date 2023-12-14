@@ -8,7 +8,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 app = Flask(__name__)
-
+# This is a comment
 app.config['SECRET_KEY'] = 'nvmnkfwslzmnx.kj456/W?ERIU&WE(F*&/hksef;g98734:SP(&D'
 app.config['SUBMITTED_DATA'] = os.path.join('static', 'data', '')
 app.config['SUBMITTED_IMG'] = os.path.join('static', 'img', '')
