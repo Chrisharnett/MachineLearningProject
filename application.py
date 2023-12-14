@@ -7,17 +7,17 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-app = Flask(__name__)
+application = Flask(__name__)
 # This is a comment
-app.config['SECRET_KEY'] = 'nvmnkfwslzmnx.kj456/W?ERIU&WE(F*&/hksef;g98734:SP(&D'
-app.config['SUBMITTED_DATA'] = os.path.join('static', 'data', '')
-app.config['SUBMITTED_IMG'] = os.path.join('static', 'img', '')
+application.config['SECRET_KEY'] = 'nvmnkfwslzmnx.kj456/W?ERIU&WE(F*&/hksef;g98734:SP(&D'
+application.config['SUBMITTED_DATA'] = os.path.join('static', 'data', '')
+application.config['SUBMITTED_IMG'] = os.path.join('static', 'img', '')
 
-@app.route('/', methods=['POST', 'GET'])
+@application.route('/', methods=['POST', 'GET'])
 def welcome():
     return render_template('index.html')
 
-@app.route('/diabetesMachine', methods=['POST', 'GET'])
+@application.route('/diabetesMachine', methods=['POST', 'GET'])
 def diabetesMachine():
     form = PersonalDataForm()
     if form.validate_on_submit():
@@ -36,7 +36,7 @@ def diabetesMachine():
         return render_template('diabetesMachine.html', form=form)
 
 
-@app.route('/kplMachine', methods=['POST', 'GET'])
+@application.route('/kplMachine', methods=['POST', 'GET'])
 def lpkMachine():
     form = VehicleInformationForm()
     if form.validate_on_submit():
@@ -65,4 +65,4 @@ def lpkMachine():
 
 
 if __name__ == '__main__':
-    app.run(port=5002, debug=True)
+    application.run()
