@@ -19,6 +19,13 @@ Estimation Machine
 {% endblock %}
 
 {% block Machine_Name %}
+    <h1> CP 4477 Final Project</h1>
+    <h2> Demonstration of Machine Learning Models</h2>
+    <p> This app presents 2 machine learning models designed to interpret data and predict a result.</p>
+    <h3><a href={{ url_for('lpkMachine') }}> Kilometer per Liter predictor </a></h3>
+    <p> This model predicts the fuel efficiency of a vehicle based on its cylinders, horsepower, weight, year and origin of manufacture.</p>
+    <h3><a href={{ url_for('diabetesMachine') }}> Diabetes Predictor </a></h3>
+    <p> This model predicts a diabetes diagnoses based on a persons Age, BMI and plasma glucose concentration at 2 hours in an oral glucose tolerance test. </p>
 {%  endblock %}
 
 {% block Machine_Form %}

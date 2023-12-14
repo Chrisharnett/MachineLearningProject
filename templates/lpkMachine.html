@@ -6,10 +6,14 @@ Estimation Machine
 {% endblock %}
 
 {% block head_title %}
+Liters per 100 Km Prediction
+{% endblock %}
+
+{% block Machine_Name %}
 Liters per 100 Kilometers
 {% endblock %}
 
-{% block Machine_Title %}
+{% block Machine_Description %}
     {%  with messages = get_flashed_messages() %}
         {%  if messages %}
             <ul class=flashes>
@@ -19,38 +23,35 @@ Liters per 100 Kilometers
             </ul>
         {%  endif %}
     {% endwith %}
-    {%  block body%}{% endblock %}
-<h1>{{ r1['name'] }}</h1>
+    {%  block body%}
+        <p>Add vehicle information using the form below to get a fuel efficiency prediction!</p>
+    {% endblock %}
 {% endblock %}
 
-{% block Machine_Name %}
-    Liters per 100 Kilometers
-{%  endblock %}
-
 {% block Machine_Form %}
-    <h3>Add vehicle information using the form below to get a fuel efficiency prediction!</h3>
+
     <br>
     <form action="" enctype="multipart/form-data" method="post" class="w-50">
         {{ form.csrf_token }}
-        <div class="form-floating my-3">
-            {{ form.carCylinders.label() }}
+        <div class="my-3">
+            {{ form.carCylinders.label() }}<br>
             {{ form.carCylinders(class="form-control-range", id='carCylinders', min=3, max=12, type='range', value=form.carCylinders.data or 3) }}
             <span id="cylindersValue">{{  form.carCylinders.data or 0 }}</span>
         </div>
-        <div class="form-floating my-3">
-            {{ form.carHorsepower.label() }}
+        <div class="my-3">
+            {{ form.carHorsepower.label() }}<br>
             {{ form.carHorsepower(class="form-control-range", id='carHorsepower', min=40, max=200, type='range', value=form.carHorsepower.data or 40) }}
-            <span>40 - 300</span>
+            <span id="horsepowerValue">{{  form.carHorsepower.data or 0 }}</span>
         </div>
-        <div class="form-floating my-3">
-            {{ form.carWeight(class="form-control") }}
-            {{ form.carWeight.label() }}
-            <span>1500 - 5140</span>
+        <div class="my-3">
+            {{ form.carWeight.label() }}<br>
+            {{ form.carWeight(class="form-control-range", id='carWeight', min=1500, max=5200, type='range', value=form.carWeight.data or 40) }}
+            <span id="weightValue">{{  form.carWeight.data or 0 }}</span>
         </div>
-        <div class="form-floating my-3">
-            {{ form.carYear(class="form-control") }}
-            {{ form.carYear.label() }}
-            <span>1950 - 2023</span>
+        <div class="my-3">
+            {{ form.carYear.label() }}<br>
+            {{ form.carYear(class="form-control-range", id='carYear', min=1950, max=2024, type='range', value=form.carYear.data or 40) }}
+            <span id="carYearValue">{{  form.carYear.data or 0 }}</span>
         </div>
         <div class="my-3">
             {{ form.carOrigin.label(class="form-label") }}

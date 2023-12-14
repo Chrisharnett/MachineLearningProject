@@ -32,17 +32,17 @@ Diabetes Outcome Prediction
         {{ form.csrf_token }}
         <div class="col-md-2">
             {{ form.personAge.label() }}
-            {{ form.personAge(class="form-control form-control-lg", id='personAge', min=0, max=120, type='number', value=form.personAge.data or 0) }}
+            {{ form.personAge(class="form-control form-control-lg", id='personAge', min=1, max=120, type='number', value=form.personAge.data or 0) }}
         </div>
         <div class="my-3">
             {{ form.personBMI.label() }}<br>
-            {{ form.personBMI(class="form-control-range", id="personBMI", min=0, max=70, type='range', value=form.personBMI.data or 0) }}
+            {{ form.personBMI(class="form-control-range", id="personBMI", min=1.0, max=70, type='range', value=form.personBMI.data or 0) }}
             <span id="bmiValue">{{ form.personBMI.data or 0 }}</span>
         </div>
         <div class="my-3">
             {{ form.personGlucose.label() }}<br>
-            {{ form.personGlucose(class="form-control-range", id="personGlucose", min=0, max=200, type='range', value=form.personGlucose.data or 0) }}
-            <span id="glucoseValue">{{ form.personGlucose.data or 0 }}</span>
+            {{ form.personGlucose(class="form-control-range", id="personGlucose", min=1, max=200, type='range', value=form.personGlucose.data or 0) }}
+            <span id="glucoseValue">{{ form.personGlucose.data or 1 }}</span>
         </div>
         <div class="my-3">
             {{ form.submit(class="btn btn-dark") }}
